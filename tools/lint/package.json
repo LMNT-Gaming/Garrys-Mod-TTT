@@ -1,0 +1,8 @@
+{
+  "name": "lmnt-lint",
+  "private": true,
+  "description": "Syntaxprüfung aller LMNT-Lua-Dateien (Lua 5.1 / GLua ohne Erweiterungen)",
+  "dependencies": {
+    "luaparse": "0.3.1"
+  }
+}

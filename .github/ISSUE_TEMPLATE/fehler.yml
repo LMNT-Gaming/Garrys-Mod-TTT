@@ -1,0 +1,28 @@
+name: Fehler melden
+description: Etwas funktioniert nicht wie beschrieben
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Release-Version (z. B. v1.0.0) oder Commit
+    validations:
+      required: true
+  - type: textarea
+    id: beschreibung
+    attributes:
+      label: Was ist passiert?
+      description: Erwartetes und tatsächliches Verhalten
+    validations:
+      required: true
+  - type: textarea
+    id: schritte
+    attributes:
+      label: Schritte zum Nachstellen
+  - type: textarea
+    id: log
+    attributes:
+      label: Konsolen-Log
+      description: Auszug aus garrysmod/console.log (ohne Passwörter, IPs und Tokens!)
+      render: text

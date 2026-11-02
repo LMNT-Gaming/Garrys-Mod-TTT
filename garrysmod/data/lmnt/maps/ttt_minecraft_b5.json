@@ -1,0 +1,9 @@
+{
+	"_info": "LMNT Map-Profil (Modul ttt.maps). Felder und Regeln: docs/framework/api/maps.md. Schlüssel mit _ sind Kommentare.",
+	"_quellen": "author: Beschreibung des Workshop-Eintrags 159321088 (Steam-API GetPublishedFileDetails, abgerufen 17.10.2026): Der Uploader nennt sich nicht als Autor und schreibt die Map (=CG=) Finniesp zu. notes: Entity-Lump der BSP (Workshop-Addon 159321088, maps/ttt_minecraft_b5.bsp) am 17.10.2026 ausgelesen; Spawn-Regeln laut TTT2 0.14.6b lua/ttt2/libraries/map.lua.",
+	"_settings": "Overrides nur für diese Map, z. B. { \"ttt.special.chance\": 0.1 }. Bewusst leer: Hier ist keine Abweichung vom Serverstandard beschlossen.",
+	"author": "(=CG=) Finniesp",
+	"notes": "Re-Upload im Steam Workshop. BSP geprüft: 35 info_player_start und keine info_player_deathmatch – TTT2 greift deshalb auf info_player_start zurück, solange keine eigene TTT2-Spawndatei existiert. Dazu 25 ttt_random_weapon, 79 ttt_random_ammo und 5 ttt_traitor_button.",
+	"knownIssues": [],
+	"settings": {}
+}

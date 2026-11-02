@@ -1,0 +1,22 @@
+# Lokale Einstellungen und Geheimnisse – niemals versionieren
+server/settings.ini
+garrysmod/data/lmnt/secrets.json
+garrysmod/data/lmnt/owners.txt
+.env
+*.pem
+*.key
+
+# Build- und Testausgaben
+fastdl/www/
+dist/
+tools/lint/node_modules/
+tools/last_test_console.log
+*.log
+__pycache__/
+
+# Editor / OS
+.vscode/
+.idea/
+.claude/
+Thumbs.db
+.DS_Store

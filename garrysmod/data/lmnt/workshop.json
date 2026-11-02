@@ -1,0 +1,13 @@
+{
+	"_info": "Zentrale Workshop-Liste. Wird vom Server (Client-Downloads), von tools/workshop.ps1 (Prüfung + mapcycle) genutzt. Alle IDs per Steam-API geprüft.",
+	"content": [
+		{ "id": "1357204556", "name": "TTT2 (Base)", "clientDownload": true }
+	],
+	"maps": [
+		{ "id": "159321088", "name": "ttt_minecraft_b5",      "map": "ttt_minecraft_b5" },
+		{ "id": "253328815", "name": "ttt_skyscraper",        "map": "ttt_skyscraper" },
+		{ "id": "157420728", "name": "ttt_waterworld",        "map": "ttt_waterworld" },
+		{ "id": "183797802", "name": "TTT_island_2013",       "map": "ttt_island_2013" },
+		{ "id": "131667838", "name": "ttt_community_bowling", "map": "ttt_community_bowling_v5a" }
+	]
+}

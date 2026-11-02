@@ -1,0 +1,29 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lua:
+    name: Lua-Syntax (Lua 5.1 / GMod)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: luaparse installieren
+        working-directory: tools/lint
+        run: npm ci --no-audit --no-fund
+      - name: Syntaxprüfung
+        run: node tools/lint/check.js garrysmod/addons
+      - name: Keine Geheimnisse im Repo
+        run: |
+          test ! -f server/settings.ini
+          test ! -f garrysmod/data/lmnt/secrets.json
+          ! grep -rnE "discord(app)?\.com/api/webhooks/[0-9]{6,}" --include=*.lua --include=*.json --include=*.ini . | grep -v "/tests/"

@@ -1,0 +1,14 @@
+name: Funktionswunsch
+description: Idee für Rolle, Waffe, Spezialrunde oder Framework-Funktion
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idee
+    attributes:
+      label: Idee
+    validations:
+      required: true
+  - type: textarea
+    id: nutzen
+    attributes:
+      label: Warum ist das sinnvoll?

@@ -1,0 +1,16 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.ini text eol=crlf
+*.ttf binary
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.png binary
+*.jpg binary
+*.vtf binary
+*.vmt text
+*.bz2 binary
+*.gma binary
+*.zip binary
