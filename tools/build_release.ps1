@@ -37,7 +37,7 @@ function Copy-Tree([string]$rel) {
     if ($LASTEXITCODE -ge 8) { throw "robocopy-Fehler bei $rel (Code $LASTEXITCODE)" }
 }
 
-foreach ($item in "garrysmod", "server", "tools", "fastdl", "docs", "README.md", "LICENSE", "CHANGELOG.md", "SECURITY.md", "VERSION") {
+foreach ($item in "garrysmod", "server", "tools", "fastdl", "docs", "README.md", "LICENSE", "CHANGELOG.md", "SECURITY.md", "CONTRIBUTING.md", "VERSION") {
     Copy-Tree $item
 }
 
@@ -47,8 +47,19 @@ if ($leaks) { throw "Lokale Datei im Paket: $($leaks.FullName -join ', ')" }
 
 $full = Join-Path $dist "LMNT-TTT2-$version.zip"
 $addons = Join-Path $dist "LMNT-TTT2-Addons-$version.zip"
-Compress-Archive -Path (Join-Path $stage "*") -DestinationPath $full
-Compress-Archive -Path (Join-Path $stage "garrysmod") -DestinationPath $addons
+# Eigene ZIP-Erzeugung: Compress-Archive (PowerShell 5.1) schreibt Backslashes in die Pfade, die Linux-Server falsch entpacken
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
+function New-Zip([string]$target, [string]$baseDir, [string]$subDir) {
+    $zip = [IO.Compression.ZipFile]::Open($target, [IO.Compression.ZipArchiveMode]::Create)
+    try {
+        foreach ($f in Get-ChildItem (Join-Path $baseDir $subDir) -Recurse -File) {
+            $entry = $f.FullName.Substring($baseDir.Length).TrimStart('\').Replace('\', '/')
+            [void][IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $f.FullName, $entry, [IO.Compression.CompressionLevel]::Optimal)
+        }
+    } finally { $zip.Dispose() }
+}
+New-Zip $full $stage ""
+New-Zip $addons $stage "garrysmod"
 Remove-Item $stage -Recurse -Force
 
 $sums = foreach ($z in $full, $addons) {
